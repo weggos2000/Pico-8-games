@@ -18,7 +18,8 @@ function _update()
  	playerx+=playerspeed
  elseif btn(⬅️) then
   playerx-=playerspeed
- elseif btn(⬆️) then
+ end
+ if btn(⬆️) then
  	playery-=playerspeed
  elseif btn(⬇️) then
  	playery+=playerspeed
