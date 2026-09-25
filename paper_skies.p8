@@ -7,6 +7,7 @@ function _init()
 	playerspeed = 2
 	bulx=0
 	buly=0
+	bulspd=3
 end
 
 function _update()
@@ -38,7 +39,7 @@ function _update()
 		sfx(0)
 	end
 	
-	buly=buly-3
+	buly=buly-bulspd
 end
 
 function _draw()
