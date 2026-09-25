@@ -2,8 +2,7 @@ pico-8 cartridge // http://www.pico-8.com
 version 43
 __lua__
 function _init()
-	playerx=40
-	playery=64
+
 end
 
 function _update()
@@ -11,8 +10,7 @@ function _update()
 end
 
 function _draw()
-	cls()
-	spr(1,playerx,playery)
+
 end
 __gfx__
 00000000000110000018810000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
