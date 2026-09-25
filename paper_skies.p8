@@ -2,8 +2,8 @@ pico-8 cartridge // http://www.pico-8.com
 version 43
 __lua__
 function _init()
-	playerx = 64
-	playery = 100
+	playerx = 60
+	playery = 60
 end
 
 function _update()
