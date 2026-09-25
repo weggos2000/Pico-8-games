@@ -3,11 +3,23 @@ version 43
 __lua__
 function _init()
 	playerx = 60
-	playery = 60
+	playery = 100
+	playerspeed = 2
 end
 
 function _update()
-
+-- plane movement
+ if btn(➡️) then
+ 	playerx+=playerspeed
+ elseif btn(⬅️) then
+  playerx-=playerspeed
+ end
+-- you shall not leave
+ if playerx>120 then
+  playerx=120
+ elseif playerx<0 then
+  playerx=0
+ end
 end
 
 function _draw()
