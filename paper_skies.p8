@@ -15,6 +15,13 @@ function _init()
 	bulx=0
 	buly=0
 	bulspd=3
+--map table
+	starx={}
+	stary={}
+	for i=1,50 do
+		add(starx,rnd(128))
+		add(stary,rnd(128))
+	end
 end
 
 function _update()
@@ -59,6 +66,7 @@ end
 
 function _draw()
 	cls()
+	starfield()
 	spr(playerspr,playerx,playery)
 	spr(48,bulx,buly)
 	
@@ -78,6 +86,12 @@ function _draw()
 	  spr(13,128-i*6,1)
 	 end
 	end 
+end
+-->8
+function starfield()
+	for i=1,#starx do
+		pset(starx[i],stary[i],flr(rnd(17)))
+	end
 end
 __gfx__
 00000000000110000001100000011000000000000000000000000000000000000000000000000000000000000000000000000000011100000808000008080000
