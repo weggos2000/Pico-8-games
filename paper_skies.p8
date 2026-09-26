@@ -18,9 +18,11 @@ function _init()
 --map table
 	starx={}
 	stary={}
-	for i=1,50 do
+	starspd={}
+	for i=1,100 do
 		add(starx,rnd(128))
 		add(stary,rnd(128))
+		add(starspd,rnd(1.5)+0.5)	
 	end
 end
 
@@ -62,7 +64,11 @@ end
 	end
 	
 	buly=buly-bulspd
+
+-- map stuff
+	animatestars()
 end
+
 
 function _draw()
 	cls()
@@ -90,8 +96,24 @@ end
 -->8
 function starfield()
 	for i=1,#starx do
-		pset(starx[i],stary[i],flr(rnd(17)))
+		local strcol=6
+		if starspd[i]<1 then
+			strcol=1
+		elseif starspd[i]<1.5 then
+		 strcol=13
+		end
+		pset(starx[i],stary[i],strcol)
 	end
+end
+function animatestars()
+	for i=1,#stary do
+	 local sy=stary[i]
+		sy+=starspd[i]
+		if sy>128 then
+			sy=sy-128
+		end
+		stary[i]=sy
+ end
 end
 __gfx__
 00000000000110000001100000011000000000000000000000000000000000000000000000000000000000000000000000000000011100000808000008080000
