@@ -4,7 +4,6 @@ __lua__
 --random shizzle
 function _init()
  cls(0)
- 
  mode="start"
 end
 
@@ -13,6 +12,8 @@ function _update()
 		update_game()
 	elseif mode=="start" then
 		update_start()
+	elseif mode=="gameover" then
+	 update_gameover()
 	end
 end
 
@@ -21,6 +22,8 @@ function _draw()
 		draw_game()
 	elseif mode=="start" then
 	 draw_start()
+	elseif mode=="gameover" then
+	 draw_gameover()
 	end
 end
 
@@ -110,7 +113,7 @@ end
 		sfx(0)
 		muzzle=5
 	end
-	
+
 	buly=buly-bulspd
 
 -- map stuff
@@ -121,6 +124,11 @@ function update_start()
 	if btnp(❎) or btnp(🅾️) then
 	 startgame()
 	end
+end
+function update_gameover()
+ if btnp(❎) or btnp(🅾️) then
+  mode="start"
+ end
 end
 -->8
 -- drawing stuff
@@ -152,6 +160,12 @@ function draw_start()
 	cls(1)
 	print("paper skies", 40, 40, 12)
 	print("press any key to start",20, 80, 7)
+end
+
+function draw_gameover()
+	cls(4)
+	print("game over =(", 40, 40, 12)
+	print("press any key to continue",20, 80, 7)
 end
 __gfx__
 00000000000110000001100000011000000000000000000000000000000000000000000000000000000000000000000000000000011100000808000008080000
