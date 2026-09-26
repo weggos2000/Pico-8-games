@@ -96,7 +96,7 @@ end
 -->8
 function starfield()
 	for i=1,#starx do
-		local strcol=7
+		local strcol=6
 		if starspd[i]<1 then
 			strcol=1
 		elseif starspd[i]<1.5 then
