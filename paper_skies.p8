@@ -120,8 +120,19 @@ end
 	animatestars()
 end
 
-
-function _draw()
+function update_start()
+	if btnp(❎) or btnp(🅾️) then
+	 startgame()
+	end
+end
+function update_gameover()
+ if btnp(❎) or btnp(🅾️) then
+  mode="start"
+ end
+end
+-->8
+-- drawing stuff
+function draw_game()
 	cls()
 	starfield()
 	spr(playerspr,playerx,playery)
@@ -144,27 +155,17 @@ function _draw()
 	 end
 	end 
 end
--->8
-function starfield()
-	for i=1,#starx do
-		local strcol=6
-		if starspd[i]<1 then
-			strcol=1
-		elseif starspd[i]<1.5 then
-		 strcol=13
-		end
-		pset(starx[i],stary[i],strcol)
-	end
+
+function draw_start()
+	cls(1)
+	print("paper skies", 40, 40, 12)
+	print("press any key to start",20, 80, 7)
 end
-function animatestars()
-	for i=1,#stary do
-	 local sy=stary[i]
-		sy+=starspd[i]
-		if sy>128 then
-			sy=sy-128
-		end
-		stary[i]=sy
- end
+
+function draw_gameover()
+	cls(4)
+	print("game over =(", 40, 40, 12)
+	print("press any key to continue",20, 80, 7)
 end
 __gfx__
 00000000000110000001100000011000000000000000000000000000000000000000000000000000000000000000000000000000011100000808000008080000
