@@ -122,12 +122,12 @@ end
 	end
 	
 	--move bullets
-	for i=1,#buls do
+	for i=#buls,1,-1 do
 		local mybul=buls[i]
 		mybul.y = mybul.y-4
 	 
 	 if mybul.y<-8 then
-	  deli(buls,mybul)
+	  deli(buls,i)
 	 end
 	end
 
