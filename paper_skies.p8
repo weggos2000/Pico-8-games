@@ -38,9 +38,7 @@ function startgame()
 	lives = 3
 	bombs = 3
 --player bullet 
-	bulx=0
-	buly=0
-	bulspd=3
+	buls={}
 --map table
 	starx={}
 	stary={}
@@ -115,13 +113,19 @@ end
 -- shooting mechanics block
 
 	if btnp(🅾️) then
-		buly=playery
-		bulx=playerx
+	 local newbul={}
+	 newbul.x = playerx
+	 newbul.y = playery
+	 add (buls,newbul)
 		sfx(0)
 		muzzle=5
 	end
-
-	buly=buly-bulspd
+	
+	--move bullets
+	for i=1,#buls do
+		local mybul=buls[i]
+		mybul.y = mybul.y-4
+	end
 
 -- map stuff
 	animatestars()
@@ -143,7 +147,10 @@ function draw_game()
 	cls()
 	starfield()
 	spr(playerspr,playerx,playery)
-	spr(48,bulx,buly)
+	for i=1,#buls do
+	 local mybul=buls[i]
+	 spr(48,mybul.x,mybul.y)
+	end
 	
 	if muzzle>0 then
 		circfill(playerx+3,playery-1,muzzle,7)
