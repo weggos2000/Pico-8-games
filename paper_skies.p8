@@ -6,7 +6,6 @@ function _init()
  cls(0)
  mode="start"
 end
-
 function _update()
 	if mode=="game" then
 		update_game()
@@ -51,28 +50,36 @@ function startgame()
 		add(stary,rnd(128))
 		add(starspd,rnd(1.5)+0.5)	
 	end
-end
--->8
---i forgot what i was doing and am too lazy to look what the code does
-function starfield()
-	for i=1,#starx do
-		local strcol=6
-		if starspd[i]<1 then
-			strcol=1
-		elseif starspd[i]<1.5 then
-		 strcol=13
-		end
-		pset(starx[i],stary[i],strcol)
+	stars={}
+	for i=1,100 do
+	 local newstar={}
+	 newstar.x=flr(rnd(128))
+	 newstar.y=flr(rnd(128))
+	 newstar.spd=rnd(1.5)+0.5
+	 add(stars,newstar)
 	end
 end
+-->8
+-- tools
+function starfield()
+ for i=1,#stars do
+  local mystar=stars[i]
+  local scol=6
+  if mystar.spd<1 then
+  	scol=1
+  elseif mystar.spd<1.5 then
+   scol=13
+  end
+  pset(mystar.x,mystar.y,scol)
+ end
+end
 function animatestars()
-	for i=1,#stary do
-	 local sy=stary[i]
-		sy+=starspd[i]
-		if sy>128 then
-			sy=sy-128
-		end
-		stary[i]=sy
+ for i=1,#stars do
+  local mystar=stars[i]
+  mystar.y=mystar.y+mystar.spd
+  if mystar.y>128 then
+  	mystar.y=mystar.y-128
+  end
  end
 end
 -->8
