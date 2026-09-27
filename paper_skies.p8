@@ -125,6 +125,10 @@ end
 	for i=1,#buls do
 		local mybul=buls[i]
 		mybul.y = mybul.y-4
+	 
+	 if mybul.y<-8 then
+	  deli(buls,mybul)
+	 end
 	end
 
 -- map stuff
