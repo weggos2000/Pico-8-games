@@ -44,6 +44,7 @@ function startgame()
 	invul = 0
 --player bullet 
 	buls={}
+	bult=0
 --enemies
  enemies={}
  booms={}
@@ -157,15 +158,19 @@ end
 -- end movement block
 -- shooting mechanics block
 
-	if btnp(🅾️) then
-	 local newbul={}
-	 newbul.x = ship.x
-	 newbul.y = ship.y
-	 newbul.spr = 48
-	 add (buls,newbul)
-		sfx(0)
-		muzzle=5
+	if btn(🅾️) then
+		if bult<=0 then
+		 local newbul={}
+		 newbul.x = ship.x
+		 newbul.y = ship.y
+		 newbul.spr = 48
+		 add (buls,newbul)
+			sfx(0)
+			muzzle=5
+			bult=7
+		end
 	end
+	bult-=1
 	
 	--move bullets
 	for i=#buls,1,-1 do
