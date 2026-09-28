@@ -255,7 +255,7 @@ function draw_game()
 		drawspr(ship)
 	else
 		--invul state
-		if sin(t/10)<0 then
+		if sin(t/5)<0 then
 			drawspr(ship) 
 		end
 	end
