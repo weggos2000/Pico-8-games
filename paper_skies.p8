@@ -220,7 +220,7 @@ end
 	 		explode(myen.x,myen.y)
 	  	del(enemies,myen)
 	 	 del(buls,mybul)
-	 	 score+=1000
+	 	 score+=100
 	 	 sfx(2)
 	 	 spawnen()
 	 	end
