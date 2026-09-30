@@ -1,7 +1,7 @@
 pico-8 cartridge // http://www.pico-8.com
 version 43
 __lua__
--random shizzle
+--random shizzle
 function _init()
  cls(0)
  mode="start"
@@ -119,6 +119,7 @@ function spawnen()
 	myen.y=-8
 	myen.spr=16
 	myen.hp=3
+	myen.flash=0
 	add(enemies,myen)
 end
 function explode(x,y)
@@ -187,6 +188,9 @@ end
 		myen.y+=1
 		myen.x+=rnd(2)-1
 		myen.spr+=0.25
+		if myen.flash>0 then
+			myen.flash-=1
+		end
 		if myen.spr>=18 then
 			myen.spr=16
 		end
@@ -199,7 +203,6 @@ end
 		 myen.x=0
 		end
 	end
-	
 	--collision ship and enemies
 	if invul==0 then
 		for myen in all(enemies) do
@@ -228,6 +231,7 @@ end
 	 	 else
 	 	  del(buls,mybul)
 	 	 	myen.hp -=1
+	 	 	myen.flash = 4
 	 	 	score +=20
 	 	 	sfx(4)
 	 	 end
@@ -278,11 +282,15 @@ function draw_game()
 	end
 	--draw enemies
 	for myenem in all(enemies) do
+	 if myenem.flash>0 and sin(t/5)<0 then
+	  for c=1,15 do
+	   pal(c,7)
+	  end
+	 end
 	 drawspr(myenem)
+	 pal()
 	end
 	
-	--collision ship x enemies
-
 	if muzzle>0 then
 		circfill(ship.x+3,ship.y-1,muzzle,7)
 	end
